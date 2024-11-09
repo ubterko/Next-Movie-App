@@ -15,6 +15,7 @@ import { usePagination } from "./hooks/usePagination";
 import { FaArrowLeft } from "react-icons/fa";
 import { IoMdArrowDropright } from "react-icons/io";
 import WhatsStreaming from "./sections/whatsStreaming";
+import Loading from "./Loading";
 
 
 export default function Home() {
@@ -24,46 +25,50 @@ export default function Home() {
   
   // console.log(movieArray)
   //movieArray.titleText
-
-  
-
-  return (
-    <div>
-      <div className="w-[60vw]">
-        <div className="flex justify-center mt-10">
-          <Search />
-        </div>
-        <div className="flex flex-col justify-center mt-10">
-            <h1 className="text-[#86C232] font-bold m-1">Favourites</h1>
-            <div className="flex justify-between gap-4 flex-wrap">
-              {
-                visibleItems?.map((movieObj: any, index: number) => (
-                  <Card movie={movieObj}  />
-                )
-              )
-            }
+  if (isFetching) {
+    return (
+      <Loading />
+    )
+  } else {
+    return (
+      <div>
+        <div className="w-[60vw]">
+          <div className="flex justify-center mt-10">
+            <Search />
           </div>
-          {!showAll && <div className="relative left-[90%] text-gray-400 m-1">
-            <button onClick={() => setShowAll(!showAll)}>
-                <div className="flex justify-center items-center font-medium">
-                  show all 
-                  <IoMdArrowDropright size={24} className="inline" />
-                </div>
-              </button>
-          </div>}
-        </div>
-
-        <div>
-          <h1 className="text-[#86C232] font-bold m-1">Streaming on Netflix</h1>
-          <div className="flex justify-between flex-wrap"><WhatsStreaming providerName="Netflix" /></div>
-        </div>
-      
-        <div>
-          <h1 className="text-[#86C232] font-bold m-1">Streaming on Apple TV+</h1>
-          <div className="flex justify-between flex-wrap"><WhatsStreaming providerName="Apple TV+" /></div>
+          <div className="flex flex-col justify-center mt-10">
+              <h1 className="text-[#86C232] font-bold m-1">Favourites</h1>
+              <div className="flex justify-between gap-4 flex-wrap">
+                {
+                  visibleItems?.map((movieObj: any, index: number) => (
+                    <Card movie={movieObj}  />
+                  )
+                )
+              }
+            </div>
+            {!showAll && <div className="relative left-[90%] text-gray-400 m-1">
+              <button onClick={() => setShowAll(!showAll)}>
+                  <div className="flex justify-center items-center font-medium">
+                    show all 
+                    <IoMdArrowDropright size={24} className="inline" />
+                  </div>
+                </button>
+            </div>}
+          </div>
+  
+          <div>
+            <h1 className="text-[#86C232] font-bold m-1">Streaming on Netflix</h1>
+            <div className="flex justify-between flex-wrap"><WhatsStreaming providerName="Netflix" /></div>
+          </div>
+        
+          <div>
+            <h1 className="text-[#86C232] font-bold m-1">Streaming on Apple TV+</h1>
+            <div className="flex justify-between flex-wrap"><WhatsStreaming providerName="Apple TV+" /></div>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+  
 }
-
+  

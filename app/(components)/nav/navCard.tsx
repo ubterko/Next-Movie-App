@@ -16,22 +16,22 @@ import { TbBrandDisney } from "react-icons/tb";
 const NavLinks = [
    
     {
-        "name": "Streaming on Netflix",
+        "name": "Netflix",
         "icon": RiNetflixFill,
         "link": "/streaming_on_netflix"
     },
     {
-        "name": "Streaming On Disney",
+        "name": "Disney",
         "icon": TbBrandDisney,
         "link": "/streaming_on_hulu"
     },
     {
-        "name": "Streaming On AppleTv",
+        "name": "AppleTv",
         "icon": SiAppletv,
         "link": "/streaming_on_appletv"
     },
     {
-        "name": "Streaming On AmazonPrime",
+        "name": "AmazonPrime",
         "icon": SiAmazonprime,
         "link": "/streaming_on_amazon_prime"
     },
